@@ -16,6 +16,7 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   { import = 'plugins' },
+  { import = 'plugins/themes/tokyonight' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -37,3 +38,6 @@ require('lazy').setup({
     },
   },
 })
+
+-- NOTE: Set desired theme here:
+vim.cmd [[colorscheme tokyonight]]
