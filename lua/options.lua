@@ -36,6 +36,12 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Tab and indentation settings
+vim.o.expandtab = true -- Use spaces instead of tabs
+vim.o.tabstop = 2 -- Number of spaces a tab counts for
+vim.o.shiftwidth = 2 -- Number of spaces for autoindent
+vim.o.softtabstop = 2 -- Number of spaces for <Tab> key
+
 -- Save undo history
 vim.o.undofile = true
 
@@ -80,4 +86,3 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
-

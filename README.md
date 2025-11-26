@@ -1,7 +1,6 @@
-
 # My NeoVim Configuration
 
-<img src="dashboard.png" height=350>
+![My Dashboard](dashboard.png)
 
 Built with the [kickstart](https://github.com/nvim-lua/kickstart.nvim) scaffolding.
 
@@ -9,5 +8,5 @@ Built with the [kickstart](https://github.com/nvim-lua/kickstart.nvim) scaffoldi
 
 ## Things I've added
 
-  - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
-  - [auto-save](https://github.com/pocco81/auto-save.nvim)
+- [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
+- [auto-save](https://github.com/pocco81/auto-save.nvim)

@@ -44,6 +44,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+vim.keymap.set('n', '<leader>e', '<Cmd>Explore!<CR>')
+
 -- keymaps for barbar plugin:
 -- https://github.com/romgrk/barbar.nvim?tab=readme-ov-file#lua
 local map = vim.api.nvim_set_keymap

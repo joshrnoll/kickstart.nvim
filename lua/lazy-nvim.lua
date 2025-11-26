@@ -40,4 +40,4 @@ require('lazy').setup({
 })
 
 -- NOTE: Set desired theme here:
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight-night]]
