@@ -8,8 +8,8 @@ return {
     -- refer to `:h file-pattern` for more examples
     'BufReadPre '
       .. vim.fn.expand '~'
-      .. '/Documents/Obsidian/josh-obsidian-vault/*.md',
-    'BufNewFile ' .. vim.fn.expand '~' .. '/Documents/Obsidian/josh-obsidian-vault/*.md',
+      .. '/Documents/Obsidian/*.md',
+    'BufNewFile ' .. vim.fn.expand '~' .. '/Documents/Obsidian/*.md',
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -27,21 +27,53 @@ return {
     },
     workspaces = {
       {
-        name = 'personal',
-        path = '~/Documents/Obsidian/josh-obsidian-vault/',
+        name = 'gtd',
+        path = '~/Documents/Obsidian/gtd/',
+        overrides = {
+          notes_subdir = 'In-Tray',
+          templates = {
+            folder = 'Templates',
+            date_format = '%Y-%m-%d',
+            time_format = '%H:%M:%S-0:400',
+          },
+        },
+      },
+      {
+        name = 'para',
+        path = '~/Documents/Obsidian/para/',
+        overrides = {
+          notes_subdir = '1-Inbox',
+          templates = {
+            folder = '3-areas/Templates',
+            date_format = '%Y-%m-%d',
+            time_format = '%H:%M:%S-0:400',
+          },
+        },
+      },
+      {
+        name = 'zettelkasten',
+        path = '~/Documents/Obsidian/zettelkasten/',
+        overrides = {
+          new_notes_location = 'current_dir',
+        },
       },
     },
-    notes_subdir = '6-Zettelkasten',
+    picker = {
+      name = 'telescope.nvim',
+      note_mappings = {
+        new = '<C-x>',
+        insert_link = '<C-y>',
+      },
+      tag_mappings = {
+        new = '<C-x>',
+        insert_tag = '<C-y>',
+      },
+    },
     new_notes_location = 'notes_subdir',
     completion = {
       nvim_cmp = true,
       -- Trigger completion at 2 chars.
       min_chars = 2,
-    },
-    templates = {
-      folder = '3-areas/Templates',
-      date_format = '%Y-%m-%d',
-      time_format = '%H:%M:%S-0:400',
     },
   },
 }

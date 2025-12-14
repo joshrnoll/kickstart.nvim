@@ -29,3 +29,11 @@ vim.keymap.set('n', '<leader>ev', '<Cmd>Vexplore<CR>', { desc = '[V[E]xplore' })
 -- Manipulate buffers
 vim.keymap.set('n', '<leader>bd', '<Cmd>bd<CR>', { desc = '[B]uffer [D]elete' })
 vim.keymap.set('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit' })
+
+-- Obsidian Plugin
+vim.keymap.set('n', '<leader>on', '<Cmd>ObsidianNew<CR>', { desc = '[O]bsidian [N]ew' })
+vim.keymap.set('n', '<leader>ot', '<Cmd>ObsidianNewFromTemplate<CR>', { desc = '[O]bsidian new from [T]emplate' })
+vim.keymap.set('n', '<leader>os', '<Cmd>ObsidianSearch<CR>', { desc = '[O]bsidian [S]earch' })
+vim.keymap.set('n', '<leader>of', '<Cmd>ObsidianFollowLink<CR>', { desc = '[O]bsidian [F]ollow link' })
+vim.keymap.set('v', '<leader>olq', '<Cmd>ObsidianLink<CR>', { desc = '[O]bsidian [L]ink [Q]uery - Query for selection, link to matching note' })
+vim.keymap.set('v', '<leader>oln', '<Cmd>ObsidianLinkNew<CR>', { desc = '[O]bsidian [L]ink [N]ew - Create a new note and link to it' })

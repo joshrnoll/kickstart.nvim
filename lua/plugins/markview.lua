@@ -6,6 +6,10 @@ return {
     html = {
       enable = true,
     },
+    preview = {
+      filetypes = { 'markdown', 'codecompanion' },
+      ignore_buftypes = {},
+    },
   },
   dependencies = { 'saghen/blink.cmp' },
 }
