@@ -23,8 +23,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 -- netrw - File explorer
-vim.keymap.set('n', '<leader>ee', '<Cmd>Explore<CR>', { desc = '[E]xplore' })
-vim.keymap.set('n', '<leader>ev', '<Cmd>Vexplore<CR>', { desc = '[V[E]xplore' })
+vim.keymap.set('n', '<leader>e', '<Cmd>Oil<CR>', { desc = '[E]xplore' })
 
 -- Manipulate buffers
 vim.keymap.set('n', '<leader>bd', '<Cmd>bd<CR>', { desc = '[B]uffer [D]elete' })
