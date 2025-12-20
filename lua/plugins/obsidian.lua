@@ -76,4 +76,12 @@ return {
       min_chars = 2,
     },
   },
+  keys = {
+    { '<leader>on', '<Cmd>ObsidianNew<CR>', 'n', desc = '[O]bsidian [N]ew' },
+    { '<leader>ot', '<Cmd>ObsidianNewFromTemplate<CR>', 'n', desc = '[O]bsidian new from [T]emplate' },
+    { '<leader>os', '<Cmd>ObsidianSearch<CR>', 'n', desc = '[O]bsidian [S]earch' },
+    { '<leader>of', '<Cmd>ObsidianFollowLink<CR>', 'n', desc = '[O]bsidian [F]ollow link' },
+    { '<leader>olq', '<Cmd>ObsidianLink<CR>', 'v', desc = '[O]bsidian [L]ink [Q]uery - Query for selection, link to matching note' },
+    { '<leader>oln', '<Cmd>ObsidianLinkNew<CR>', 'v', desc = '[O]bsidia [L]ink [N]ew - Create a new note and link to it' },
+  },
 }

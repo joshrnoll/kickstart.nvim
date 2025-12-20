@@ -10,6 +10,9 @@ return {
       show_hidden = true,
     },
   },
+  keys = {
+    { '<leader>e', '<Cmd>Oil<CR>', 'n', desc = '[E]xplore' },
+  },
   dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
   lazy = false,
 }

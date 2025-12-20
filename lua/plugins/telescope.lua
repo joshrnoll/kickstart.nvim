@@ -55,6 +55,7 @@ return {
         --   },
         -- },
         -- pickers = {}
+
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
         },
@@ -149,5 +150,5 @@ return {
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
     end,
-  }
+  },
 }

@@ -1,19 +1,53 @@
 return {
   'olimorris/codecompanion.nvim',
   opts = {
-    disabled_adapters = { 'copilot' },
-    strategies = {
+    adapters = {
+      acp = {
+        claude_code = function()
+          return require('codecompanion.adapters').extend('claude_code', {
+            env = {
+              CLAUDE_CODE_OAUTH_TOKEN = 'cmd:sops -d $HOME/.config/nvim/keys/claude.enc.txt | tr -d "\n"',
+            },
+          })
+        end,
+      },
+      http = {
+        openrouter = function()
+          return require('codecompanion.adapters').extend('openai_compatible', {
+            env = {
+              url = 'https://openrouter.ai/api',
+              api_key = 'cmd:sops -d $HOME/.config/nvim/keys/openrouter.enc.txt | tr -d "\n"',
+              chat_url = '/v1/chat/completions',
+            },
+            schema = {
+              model = {
+                default = 'x-ai/grok-code-fast-1',
+              },
+            },
+          })
+        end,
+      },
+    },
+    interactions = {
       chat = {
-        adapter = 'ollama',
-        model = 'gpt-oss:120b-cloud',
+        adapter = 'claude_code',
       },
       inline = {
-        adapter = 'ollama',
-        model = 'gpt-oss:120b-cloud',
+        adapter = 'openrouter',
+      },
+      cmd = {
+        adapter = 'claude_code',
+      },
+      background = {
+        adapter = 'claude_code',
       },
     },
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
+  },
+  keys = {
+    { '<leader>ai', '<Cmd>CodeCompanionChat<CR>', mode = 'n', desc = 'AI chat' },
+    { '<leader>ai', '<Cmd>CodeCompanion<CR>', mode = 'v', desc = 'AI Inline chat' },
   },
 }
