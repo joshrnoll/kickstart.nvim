@@ -27,11 +27,6 @@ return {
       },
     }
 
-    require('mini.git').setup()
-    vim.keymap.set('n', '<leader>ga', '<Cmd>Git add -A<CR>', { desc = '[G]it [A]dd' })
-    vim.keymap.set('n', '<leader>gc', '<Cmd>Git commit<CR>', { desc = '[G]it [C]ommit' })
-    vim.keymap.set('n', '<leader>gp', '<Cmd>Git push<CR>', { desc = '[G]it [P]ush' })
-
     require('mini.diff').setup()
     vim.keymap.set('n', '<leader>gd', '<Cmd>lua MiniDiff.toggle_overlay()<CR>', { desc = '[G]it [D]iff' })
 
