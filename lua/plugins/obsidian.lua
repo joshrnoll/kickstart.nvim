@@ -18,9 +18,9 @@ return {
     'nvim-treesitter',
   },
   opts = {
-    -- Disable UI because markview is installed and conflicts.
+    -- Disable UI because render-markdown is installed and conflicts.
     -- I tried adding the recommended option in after/ftplugin/markdown.lua but it didn't work
-    -- (I think because markview does something similar already)
+    -- (I think because render-markdown does something similar already)
     -- https://github.com/epwalsh/obsidian.nvim/issues/286
     ui = {
       enable = false,
