@@ -16,6 +16,7 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   { import = 'plugins' },
+  { import = 'plugins.lsp' },
   { import = 'plugins/themes/tokyonight' }, -- Set to desired theme from themes/ directory
 }, {
   ui = {
