@@ -19,7 +19,6 @@ return { -- Highlight, edit, and navigate code
       'vimdoc',
       'javascript',
       'typescript',
-      'jsx',
       'tsx',
     },
     -- Autoinstall languages that are not installed
