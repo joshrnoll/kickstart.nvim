@@ -1,11 +1,11 @@
 return {
-  'echasnovski/mini.nvim',
-  config = function()
-    require('mini.ai').setup { n_lines = 500 }
+	"echasnovski/mini.nvim",
+	config = function()
+		require("mini.ai").setup({ n_lines = 500 })
 
-    local starter = require 'mini.starter'
-    starter.setup {
-      header = [[
+		local starter = require("mini.starter")
+		starter.setup({
+			header = [[
           ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  //////////////////////////////////////////////////////////
           ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠊⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀  //                                                      //
           ⠀⠀⠀⠀⠀⠀⠀⠀⡰⠈⠀⠀⠠⠂⠂⠀⠀⢀⣀⠀⠀⠀⢀⣀⣴⢟⠛⠉  //  ░█▀▄░█▀█░░░░░░░█▀█░█▀▄░░░█▀▄░█▀█░░░█▀█░█▀█░▀█▀░░░   //
@@ -20,80 +20,103 @@ return {
           ⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣧⡾⢉⡛⠿⠢⢌⢀⣾⣿⣿⣿⣿⣿⣿⠀  //                                                      //
           ⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡦⡦⢮⠀⢰⡙⡛⠿⣿⣿⣿⠂  //////////////////////////////////////////////////////////
       ]],
-      items = {
-        starter.sections.recent_files(10, false),
-        starter.sections.builtin_actions(),
-        { name = 'Projects', action = 'Telescope projects', section = 'Telescope' },
-      },
-    }
+			items = {
+				-- Uncomment for recent files section
+				-- starter.sections.recent_files(10, false),
+				--
+				-- Uncomment for Edit new buffer and Quit options
+				-- starter.sections.builtin_actions(),
 
-    require('mini.diff').setup()
-    vim.keymap.set('n', '<leader>gd', '<Cmd>lua MiniDiff.toggle_overlay()<CR>', { desc = '[G]it [D]iff' })
+				{
+					name = "Telescope - Search telescope",
+					action = "Telescope",
+					section = "Actions",
+				},
+				{
+					name = "Projects - Search projects",
+					action = "Telescope projects",
+					section = "Actions",
+				},
+				{
+					name = "Files - Search files in current directory",
+					action = "Telescope find_files",
+					section = "Actions",
+				},
+				{
+					name = "Grep - Search by grep in current directory",
+					action = "Telescope live_grep",
+					section = "Actions",
+				},
+			},
+		})
 
-    require('mini.surround').setup()
+		require("mini.diff").setup()
+		vim.keymap.set("n", "<leader>gd", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", { desc = "[G]it [D]iff" })
 
-    require('mini.comment').setup()
+		require("mini.surround").setup()
 
-    require('mini.pairs').setup()
+		require("mini.comment").setup()
 
-    require('mini.move').setup()
+		require("mini.pairs").setup()
 
-    local miniclue = require 'mini.clue'
-    miniclue.setup {
-      window = {
-        delay = 0,
-      },
-      triggers = {
-        -- Leader triggers
-        { mode = 'n', keys = '<Leader>' },
-        { mode = 'v', keys = '<Leader>' },
-        { mode = 'x', keys = '<Leader>' },
+		require("mini.move").setup()
 
-        -- Built-in completion
-        { mode = 'i', keys = '<C-x>' },
+		local miniclue = require("mini.clue")
+		miniclue.setup({
+			window = {
+				delay = 0,
+			},
+			triggers = {
+				-- Leader triggers
+				{ mode = "n", keys = "<Leader>" },
+				{ mode = "v", keys = "<Leader>" },
+				{ mode = "x", keys = "<Leader>" },
 
-        -- `g` key
-        { mode = 'n', keys = 'g' },
-        { mode = 'x', keys = 'g' },
+				-- Built-in completion
+				{ mode = "i", keys = "<C-x>" },
 
-        -- Marks
-        { mode = 'n', keys = "'" },
-        { mode = 'n', keys = '`' },
-        { mode = 'x', keys = "'" },
-        { mode = 'x', keys = '`' },
+				-- `g` key
+				{ mode = "n", keys = "g" },
+				{ mode = "x", keys = "g" },
 
-        -- Registers
-        { mode = 'n', keys = '"' },
-        { mode = 'x', keys = '"' },
-        { mode = 'i', keys = '<C-r>' },
-        { mode = 'c', keys = '<C-r>' },
+				-- Marks
+				{ mode = "n", keys = "'" },
+				{ mode = "n", keys = "`" },
+				{ mode = "x", keys = "'" },
+				{ mode = "x", keys = "`" },
 
-        -- Window commands
-        { mode = 'n', keys = '<C-w>' },
+				-- Registers
+				{ mode = "n", keys = '"' },
+				{ mode = "x", keys = '"' },
+				{ mode = "i", keys = "<C-r>" },
+				{ mode = "c", keys = "<C-r>" },
 
-        -- `z` key
-        { mode = 'n', keys = 'z' },
-        { mode = 'x', keys = 'z' },
-      },
+				-- Window commands
+				{ mode = "n", keys = "<C-w>" },
 
-      clues = {
-        -- Enhance this by adding descriptions for <Leader> mapping groups
-        miniclue.gen_clues.builtin_completion(),
-        miniclue.gen_clues.g(),
-        miniclue.gen_clues.marks(),
-        miniclue.gen_clues.registers(),
-        miniclue.gen_clues.windows(),
-        miniclue.gen_clues.z(),
-      },
-    }
+				-- `z` key
+				{ mode = "n", keys = "z" },
+				{ mode = "x", keys = "z" },
+			},
 
-    local statusline = require 'mini.statusline'
-    require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
+			clues = {
+				-- Enhance this by adding descriptions for <Leader> mapping groups
+				miniclue.gen_clues.builtin_completion(),
+				miniclue.gen_clues.g(),
+				miniclue.gen_clues.marks(),
+				miniclue.gen_clues.registers(),
+				miniclue.gen_clues.windows(),
+				miniclue.gen_clues.z(),
+			},
+		})
 
-    -- Set the section for cursor location to LINE:COLUMN
-    ---@diagnostic disable-next-line: duplicate-set-field
-    statusline.section_location = function()
-      return '%2l:%-2v'
-    end
-  end,
+		local statusline = require("mini.statusline")
+		require("mini.statusline").setup({ use_icons = vim.g.have_nerd_font })
+
+		-- Set the section for cursor location to LINE:COLUMN
+		---@diagnostic disable-next-line: duplicate-set-field
+		statusline.section_location = function()
+			return "%2l:%-2v"
+		end
+	end,
 }
