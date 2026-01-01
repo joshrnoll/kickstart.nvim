@@ -7,6 +7,11 @@ return {
         backend = 'tmux',
         enabled = true,
       },
+      tools = {
+        goose = {
+          cmd = { 'goose' },
+        },
+      },
     },
   },
   keys = {
