@@ -2,6 +2,9 @@ tags
 test.sh
 .luarc.json
 nvim
+.goose*
+CLAUDE.md
+AGENT*.md
 
 spell/
 keys/
