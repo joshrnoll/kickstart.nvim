@@ -22,31 +22,11 @@ return {
       ]],
 			items = {
 				-- Uncomment for recent files section
-				-- starter.sections.recent_files(10, false),
+				starter.sections.recent_files(10, false),
 				--
+				starter.sections.telescope(),
 				-- Uncomment for Edit new buffer and Quit options
-				-- starter.sections.builtin_actions(),
-
-				{
-					name = "Telescope - Search telescope",
-					action = "Telescope",
-					section = "Actions",
-				},
-				{
-					name = "Projects - Search projects",
-					action = "Telescope projects",
-					section = "Actions",
-				},
-				{
-					name = "Files - Search files in current directory",
-					action = "Telescope find_files",
-					section = "Actions",
-				},
-				{
-					name = "Grep - Search by grep in current directory",
-					action = "Telescope live_grep",
-					section = "Actions",
-				},
+				starter.sections.builtin_actions(),
 			},
 		})
 
