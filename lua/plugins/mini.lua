@@ -22,8 +22,24 @@ return {
       ]],
 			items = {
 				-- Uncomment for recent files section
-				starter.sections.recent_files(10, false),
-				--
+				starter.sections.recent_files(5, false),
+				items = {
+					{
+						name = "PARA",
+						action = "edit ~/Documents/Obsidian/para/",
+						section = "Obsidian",
+					},
+					{
+						name = "Zettelkasten",
+						action = "edit ~/Documents/Obsidian/zettelkasten/",
+						section = "Obsidian",
+					},
+					{
+						name = "GTD",
+						action = "edit ~/Documents/Obsidian/gtd/",
+						section = "Obsidian",
+					},
+				},
 				starter.sections.telescope(),
 				-- Uncomment for Edit new buffer and Quit options
 				starter.sections.builtin_actions(),
