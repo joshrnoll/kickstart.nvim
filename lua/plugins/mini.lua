@@ -25,6 +25,11 @@ return {
 				starter.sections.recent_files(5, false),
 				items = {
 					{
+						name = "Config",
+						action = "edit ~/.config/nvim",
+						section = "Config",
+					},
+					{
 						name = "PARA",
 						action = "edit ~/Documents/Obsidian/para/",
 						section = "Obsidian",
@@ -40,9 +45,6 @@ return {
 						section = "Obsidian",
 					},
 				},
-				starter.sections.telescope(),
-				-- Uncomment for Edit new buffer and Quit options
-				starter.sections.builtin_actions(),
 			},
 		})
 
