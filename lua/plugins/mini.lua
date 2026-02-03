@@ -27,7 +27,12 @@ return {
 					{
 						name = "Config",
 						action = "edit ~/.config/nvim",
-						section = "Config",
+						section = "Actions",
+					},
+					{
+						name = "Projects",
+						action = "Telescope projects",
+						section = "Actions",
 					},
 					{
 						name = "PARA",
