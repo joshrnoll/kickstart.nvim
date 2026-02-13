@@ -35,6 +35,11 @@ return {
 						section = "Actions",
 					},
 					{
+						name = "Blog",
+						action = "edit ~/github/my-website",
+						section = "Actions",
+					},
+					{
 						name = "PARA",
 						action = "edit ~/Documents/Obsidian/para/",
 						section = "Obsidian",
