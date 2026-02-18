@@ -87,4 +87,4 @@ vim.o.confirm = true
 
 -- Automatically change current working directory whenever you
 -- open a file, switch buffers, delete a buffer or open/close a window.
-vim.opt.autochdir = true
+-- vim.opt.autochdir = true
