@@ -54,6 +54,7 @@ return {
 					"copilot",
 					"stylua",
 					"lua_ls",
+					"gopls",
 					"pyright",
 					"ts_ls",
 					"jsonls",
