@@ -26,20 +26,27 @@ return {
 						},
 					})
 				end,
+				openai = function()
+					return require("codecompanion.adapters").extend("openai_responses", {
+						env = {
+							api_key = 'cmd:sops -d $HOME/.config/nvim/keys/openai.enc.txt | tr -d "\n"',
+						},
+					})
+				end,
 			},
 		},
 		interactions = {
 			chat = {
-				adapter = "claude_code",
+				adapter = "openai",
 			},
 			inline = {
-				adapter = "openrouter",
+				adapter = "openai",
 			},
 			cmd = {
-				adapter = "claude_code",
+				adapter = "openai",
 			},
 			background = {
-				adapter = "claude_code",
+				adapter = "openai",
 			},
 		},
 	},
