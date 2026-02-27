@@ -5,7 +5,7 @@ if ! command -v sops &> /dev/null; then
   exit 1
 fi
 
-AGE_KEY="age18dvn87z8hq2e0kak3f5d06xn9ynpcmfkkvep4ch8z32m7hkma3xsmgez3x"
+AGE_KEY="age1x75agfvq7hxnptyhrnpw63tnumxegy7v6d3kjydc7wlqmp8m2s7sj5fvp0"
 
 mkdir -p keys
 
