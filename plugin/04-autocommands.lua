@@ -11,9 +11,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Cache last project root directory on every buffer enter
+vim.g.last_project_root = nil
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	callback = function()
+		if vim.bo.filetype ~= "oil" then
+			local ok, root = pcall(require("project_nvim.project").get_project_root)
+			if ok and root then
+				vim.g.last_project_root = root
+			end
+		end
+	end,
+})
+
+-- Change nvim directory on oil buffers
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "oil://*",
 	callback = function()
-		vim.cmd("lcd " .. require("oil").get_current_dir())
+		if vim.g.last_project_root then
+			vim.cmd("lcd " .. vim.g.last_project_root)
+		else
+			vim.cmd("lcd " .. require("oil").get_current_dir())
+		end
 	end,
 })

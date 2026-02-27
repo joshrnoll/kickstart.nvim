@@ -88,3 +88,12 @@ vim.o.confirm = true
 -- Automatically change current working directory whenever you
 -- open a file, switch buffers, delete a buffer or open/close a window.
 -- vim.opt.autochdir = true
+
+-- Automatically set spell check on markdown files, text files and git commits
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "gitcommit", "text" },
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = { "en_us" }
+	end,
+})
