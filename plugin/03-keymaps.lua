@@ -15,3 +15,40 @@ vim.keymap.set("n", "<leader>wh", "<Cmd>split<CR>, ", { desc = "[W]indow split [
 
 -- Open infile
 vim.keymap.set("n", "<leader>i", "<Cmd>edit $HOME/Documents/Obsidian/gtd/infile.md<CR>", { desc = "[I]nfile" })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "yaml",
+	callback = function()
+		local opts = { buffer = true }
+		vim.keymap.set(
+			"n",
+			"<leader>sy",
+			"<cmd>YAMLTelescope<cr>",
+			vim.tbl_extend("force", opts, { desc = "YAML Telescope" })
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>vy",
+			"<cmd>YAMLView<cr>",
+			vim.tbl_extend("force", opts, { desc = "View current YAML path" })
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>yy",
+			"<cmd>YAMLYank<cr>",
+			vim.tbl_extend("force", opts, { desc = "YAML Yank path and value" })
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>yk",
+			"<cmd>YAMLYankKey<cr>",
+			vim.tbl_extend("force", opts, { desc = "YAML Yank key" })
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>yv",
+			"<cmd>YAMLYankValue<cr>",
+			vim.tbl_extend("force", opts, { desc = "YAML Yank value" })
+		)
+	end,
+})
