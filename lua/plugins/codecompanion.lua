@@ -37,7 +37,7 @@ return {
 		},
 		interactions = {
 			chat = {
-				adapter = "openai",
+				adapter = "claude_code",
 			},
 			inline = {
 				adapter = "openai",
@@ -46,7 +46,7 @@ return {
 				adapter = "openai",
 			},
 			background = {
-				adapter = "openai",
+				adapter = "claude_code",
 			},
 		},
 	},
@@ -54,7 +54,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	keys = {
-		{ "<leader>cc", "<Cmd>CodeCompanionChat<CR>", mode = "n", desc = "CodeCompanion Chat" },
-		{ "<leader>cc", "<Cmd>CodeCompanion<CR>", mode = "v", desc = "CodeCompanion Inline Chat" },
+		{ "<leader>cc", "<Cmd>CodeCompanionChat<CR>", mode = { "n", "v" }, desc = "CodeCompanion Chat" },
+		{ "<leader>ci", "<Cmd>CodeCompanion<CR>", mode = "v", desc = "CodeCompanion Inline Chat" },
 	},
 }
