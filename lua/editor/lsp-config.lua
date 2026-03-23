@@ -61,6 +61,7 @@ return {
 					"eslint_d",
 					"yamllint",
 					"yamlls",
+					"helm_ls",
 					"marksman",
 					"markdown-toc",
 					"markdownlint-cli2",
@@ -75,6 +76,27 @@ return {
 			require("mason-lspconfig").setup({
 				automatic_enable = true,
 			})
+
+			-- yamlls schema configuration helper
+			-- Reason: Sends workspace/didChangeConfiguration to yamlls for the current buffer
+			-- Pass a schema URL/identifier to apply it, or nil to clear all schemas
+			_G.SetYamlSchema = function(schema_url)
+				local clients = vim.lsp.get_clients({ bufnr = 0, name = "yamlls" })
+				if #clients == 0 then
+					vim.notify("yamlls not attached to buffer", vim.log.levels.WARN)
+					return
+				end
+				for _, client in ipairs(clients) do
+					client:notify("workspace/didChangeConfiguration", {
+						settings = {
+							yaml = {
+								schemas = schema_url and { [schema_url] = vim.uri_from_bufnr(0) } or {},
+							},
+						},
+					})
+				end
+				vim.notify("YAML schema: " .. (schema_url or "none"), vim.log.levels.INFO)
+			end
 
 			require("blink.cmp").get_lsp_capabilities()
 		end,
