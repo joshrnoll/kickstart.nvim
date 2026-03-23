@@ -50,5 +50,19 @@ vim.api.nvim_create_autocmd("FileType", {
 			"<cmd>YAMLYankValue<cr>",
 			vim.tbl_extend("force", opts, { desc = "YAML Yank value" })
 		)
+
+		-- YAML Schema switching
+		-- Reason: Sends workspace/didChangeConfiguration to yamlls to apply a schema to the current buffer
+		vim.keymap.set("n", "<leader>ysk", function()
+			SetYamlSchema("kubernetes")
+		end, vim.tbl_extend("force", opts, { desc = "[Y]aml [S]chema [K]ubernetes" }))
+
+		vim.keymap.set("n", "<leader>ysc", function()
+			SetYamlSchema("https://json.schemastore.org/chart.json")
+		end, vim.tbl_extend("force", opts, { desc = "[Y]aml [S]chema [C]hart" }))
+
+		vim.keymap.set("n", "<leader>ysn", function()
+			SetYamlSchema(nil)
+		end, vim.tbl_extend("force", opts, { desc = "[Y]aml [S]chema [N]one" }))
 	end,
 })
