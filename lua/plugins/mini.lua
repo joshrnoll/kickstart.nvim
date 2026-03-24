@@ -21,39 +21,41 @@ return {
           ⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡦⡦⢮⠀⢰⡙⡛⠿⣿⣿⣿⠂  //////////////////////////////////////////////////////////
       ]],
 			items = {
-				-- Uncomment for recent files section
-				starter.sections.recent_files(5, false),
-				items = {
-					{
-						name = "Config",
-						action = "edit ~/.config/nvim",
-						section = "Actions",
-					},
-					{
-						name = "Projects",
-						action = "Telescope projects",
-						section = "Actions",
-					},
-					{
-						name = "Blog",
-						action = "edit ~/github/my-website",
-						section = "Actions",
-					},
-					{
-						name = "PARA",
-						action = "edit ~/Documents/Obsidian/para/",
-						section = "Obsidian",
-					},
-					{
-						name = "Zettelkasten",
-						action = "edit ~/Documents/Obsidian/zettelkasten/",
-						section = "Obsidian",
-					},
-					{
-						name = "GTD",
-						action = "edit ~/Documents/Obsidian/gtd/",
-						section = "Obsidian",
-					},
+				{
+					name = "Config",
+					action = "edit ~/.config/nvim",
+					section = "Actions",
+				},
+				{
+					name = "Projects",
+					action = "Telescope projects",
+					section = "Actions",
+				},
+				{
+					name = "Blog",
+					action = "edit ~/github/my-website",
+					section = "Actions",
+				},
+				{
+					name = "Inbox",
+					action = function()
+						local name = vim.fn.input("Inbox note name: ")
+						if name ~= "" then
+							vim.cmd(
+								"edit "
+									.. vim.fn.expand("$HOME")
+									.. "/Documents/Obsidian/my-vault/Inbox/"
+									.. name
+									.. ".md"
+							)
+						end
+					end,
+					section = "Obsidian",
+				},
+				{
+					name = "Zettelkasten",
+					action = "edit ~/Documents/Obsidian/zettelkasten/",
+					section = "Obsidian",
 				},
 			},
 		})
