@@ -27,32 +27,10 @@ return {
 		},
 		workspaces = {
 			{
-				name = "zettelkasten",
-				path = "~/Documents/Obsidian/zettelkasten/",
+				name = "my-vault",
+				path = "~/Documents/Obsidian/my-vault/",
 				overrides = {
-					new_notes_location = "current_dir",
-					templates = {
-						folder = "Templates",
-					},
-				},
-			},
-			{
-				name = "para",
-				path = "~/Documents/Obsidian/para/",
-				overrides = {
-					notes_subdir = "1-Inbox",
-					templates = {
-						folder = "3-areas/Templates",
-						date_format = "%Y-%m-%d",
-						time_format = "%H:%M:%S-0:400",
-					},
-				},
-			},
-			{
-				name = "gtd",
-				path = "~/Documents/Obsidian/gtd/",
-				overrides = {
-					notes_subdir = "In-Tray",
+					notes_subdir = "Inbox",
 					templates = {
 						folder = "Templates",
 						date_format = "%Y-%m-%d",

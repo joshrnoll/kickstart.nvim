@@ -14,7 +14,12 @@ vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>, ", { desc = "[W]indow split 
 vim.keymap.set("n", "<leader>wh", "<Cmd>split<CR>, ", { desc = "[W]indow split [H]orizontal" })
 
 -- Open infile
-vim.keymap.set("n", "<leader>i", "<Cmd>edit $HOME/Documents/Obsidian/gtd/infile.md<CR>", { desc = "[I]nfile" })
+vim.keymap.set("n", "<leader>i", function()
+	local name = vim.fn.input("Inbox note name: ")
+	if name ~= "" then
+		vim.cmd("edit " .. vim.fn.expand("$HOME") .. "/Documents/Obsidian/my-vault/Inbox/" .. name .. ".md")
+	end
+end, { desc = "[I]nbox new note" })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "yaml",
