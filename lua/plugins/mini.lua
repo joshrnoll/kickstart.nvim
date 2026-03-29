@@ -37,7 +37,7 @@ return {
 					section = "Actions",
 				},
 				{
-					name = "Inbox",
+					name = "New Note",
 					action = function()
 						local name = vim.fn.input("Inbox note name: ")
 						if name ~= "" then
@@ -53,8 +53,13 @@ return {
 					section = "Obsidian",
 				},
 				{
+					name = "Inbox",
+					action = "edit ~/Documents/Obsidian/my-vault/Inbox/",
+					section = "Obsidian",
+				},
+				{
 					name = "Zettelkasten",
-					action = "edit ~/Documents/Obsidian/zettelkasten/",
+					action = "edit ~/Documents/Obsidian/my-vault/Zettelkasten/",
 					section = "Obsidian",
 				},
 			},
