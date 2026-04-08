@@ -97,3 +97,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.spelllang = { "en_us" }
 	end,
 })
+
+-- Label each window with the filename in diff mode
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "diff",
+	callback = function()
+		if vim.opt.diff:get() then
+			vim.opt_local.winbar = "%t"
+		end
+	end,
+})
