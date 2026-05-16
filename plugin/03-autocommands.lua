@@ -13,13 +13,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Cache last project root directory on every buffer enter
 vim.g.last_project_root = nil
+local function find_project_root(path)
+	if path == "" then
+		return nil
+	end
+	local markers = { ".git", ".obsidian" }
+	local dir = vim.fs.dirname(path)
+	return vim.fs.root(dir, markers)
+end
+
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
-	callback = function()
-		if vim.bo.filetype ~= "oil" then
-			local ok, root = pcall(require("project_nvim.project").get_project_root)
-			if ok and root then
+	callback = function(args)
+		if vim.bo[args.buf].filetype ~= "oil" then
+			local root = find_project_root(vim.api.nvim_buf_get_name(args.buf))
+			if root then
 				vim.g.last_project_root = root
+				vim.cmd("cd " .. vim.fn.fnameescape(root))
 			end
 		end
 	end,
@@ -30,9 +40,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "oil://*",
 	callback = function()
 		if vim.g.last_project_root then
-			vim.cmd("lcd " .. vim.g.last_project_root)
+			vim.cmd("lcd " .. vim.fn.fnameescape(vim.g.last_project_root))
 		else
-			vim.cmd("lcd " .. require("oil").get_current_dir())
+			vim.cmd("lcd " .. vim.fn.fnameescape(require("oil").get_current_dir()))
 		end
 	end,
 })

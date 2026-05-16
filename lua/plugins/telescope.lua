@@ -4,6 +4,7 @@ return {
 		event = "VimEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-project.nvim",
 			{ -- If encountering errors, see telescope-fzf-native README for installation instructions
 				"nvim-telescope/telescope-fzf-native.nvim",
 
@@ -20,6 +21,8 @@ return {
 			},
 		},
 		config = function()
+			local project_actions = require("telescope._extensions.project.actions")
+
 			require("telescope").setup({
 				defaults = {
 					file_ignore_patterns = { "%.git/" },
@@ -34,12 +37,36 @@ return {
 				},
 				extensions = {
 					["ui-select"] = { require("telescope.themes").get_dropdown() },
+					project = {
+						base_dirs = {
+							{ path = "~/github", max_depth = 4 },
+							{ path = "~/gitea", max_depth = 4 },
+							{ path = "~/gitlab", max_depth = 4 },
+							{ path = "~/repos", max_depth = 4 },
+						},
+						ignore_missing_dirs = true,
+						hidden_files = true,
+						order_by = "recent",
+						search_by = { "title", "path" },
+						cd_scope = { "global", "tab", "window" },
+						on_project_selected = function(prompt_bufnr)
+							project_actions.find_project_files(prompt_bufnr, true)
+						end,
+					},
 				},
 			})
 
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
+			pcall(require("telescope").load_extension, "project")
+
+			local obsidian_dir = vim.fn.expand("~/Documents/Obsidian")
+			if vim.fn.isdirectory(obsidian_dir) == 1 then
+				for _, marker in ipairs(vim.fs.find(".obsidian", { path = obsidian_dir, type = "directory", limit = 100 })) do
+					project_actions.add_project_path(vim.fs.dirname(marker))
+				end
+			end
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
@@ -54,6 +81,11 @@ return {
 			})
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, {
 				desc = "[S]earch [S]elect Telescope",
+			})
+			vim.keymap.set("n", "<leader>sp", function()
+				require("telescope").extensions.project.project({})
+			end, {
+				desc = "[S]earch [P]rojects",
 			})
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, {
 				desc = "[S]earch current [W]ord",
