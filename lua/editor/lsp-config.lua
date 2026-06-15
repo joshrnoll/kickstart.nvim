@@ -51,7 +51,6 @@ return {
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"tree-sitter-cli",
-					"copilot",
 					"stylua",
 					"lua_ls",
 					"gopls",
