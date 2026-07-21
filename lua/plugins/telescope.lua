@@ -61,13 +61,6 @@ return {
 			pcall(require("telescope").load_extension, "ui-select")
 			pcall(require("telescope").load_extension, "project")
 
-			local obsidian_dir = vim.fn.expand("~/Documents/Obsidian")
-			if vim.fn.isdirectory(obsidian_dir) == 1 then
-				for _, marker in ipairs(vim.fs.find(".obsidian", { path = obsidian_dir, type = "directory", limit = 100 })) do
-					project_actions.add_project_path(vim.fs.dirname(marker))
-				end
-			end
-
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, {
